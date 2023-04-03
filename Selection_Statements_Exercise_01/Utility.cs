@@ -13,6 +13,7 @@ internal class Utility
         }
         return new string(result);
     }
+
     internal static string GenerateRandomEmail()
     {
         // Generate a random username
@@ -30,6 +31,7 @@ internal class Utility
         return emails[new Random().Next(0, 3)];
 
     }
+
     internal static string GenerateRandomFirstName() => new Bogus.Person().FirstName;
     internal static string GenerateRandomLastName() => new Bogus.Person().LastName;
     internal static double GenerateRandomPrice() => Convert.ToDouble(new Bogus.DataSets.Commerce().Price(-1, 101));
@@ -37,8 +39,7 @@ internal class Utility
     internal static double GetRandomTemperature() => ((new Random().Next(-1000, 4000) / 100.0) * 9 / 5) + 32;
     #endregion
 
-    // Foreach of the methods below delete the `throw new NotImplementedException();` bit of code and complete the TODO's
-
+    // FOREACH OF THE METHODS BELOW DELETE THIS CODE `throw new NotImplementedException();` AND COMPLETE THE TODO'S
     internal static bool CheckFor_at_Symbol(string? emailAddress)
     {
         // TODO: Check that the email address contains an @ symbol in the proper place
