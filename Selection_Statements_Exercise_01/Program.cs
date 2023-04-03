@@ -3,28 +3,28 @@
 // TODO: Go into the Methods class and complete all of the TODO's
 
 var emailAddress = Utility.GenerateRandomEmail();
-var has_at_symbol = Methods.CheckFor_at_Symbol(emailAddress);
+var has_at_symbol = Methods.CheckForMultiple_at_Symbols(emailAddress);
 Console.WriteLine(has_at_symbol);
 
 
 var firstName = Utility.GenerateRandomFirstName();
 var lastName = Utility.GenerateRandomLastName();
-var isProperlyCapitalized = Methods.CheckIfProperlyCapitalized(firstName, lastName);
+var isProperlyCapitalized = Methods.CheckForProperCapitalization(firstName, lastName);
 Console.WriteLine(isProperlyCapitalized);
 
 
 var price = Utility.GenerateRandomPrice();
-var priceRange = Methods.IsPriceInRange(price);
+var priceRange = Methods.CheckForPriceInRange(price);
 Console.WriteLine(priceRange);
 
 
 var value = Utility.GenerateRandomValue();
-var isNegative = Methods.IsValueNegative(value);
+var isNegative = Methods.CheckForNegativeValue(value);
 Console.WriteLine(isNegative);
 
 
 var temperature = Utility.GetRandomTemperature();
-Methods.ColdWarmOrHot(temperature);
+Methods.CheckTemperature(temperature);
 
 
 var card1 = Utility.GenerateRandomCard();

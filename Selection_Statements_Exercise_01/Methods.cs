@@ -4,26 +4,40 @@ internal class Methods
 {
     // FOREACH OF THE METHODS BELOW DELETE THIS CODE `throw new NotImplementedException();`
     // AND COMPLETE THE TODO'S
-    internal static bool CheckFor_at_Symbol(string? emailAddress)
+    internal static bool CheckForMultiple_at_Symbols(string? emailAddress)
     {
-        // TODO: Check that the email address contains an @ symbol in the proper place
+        // TODO: Check that the email address contains only 1 @ symbol and is not null or empty
         //       - if the string is Null or Empty return false
-        //       - if the @ symbol is not in the proper spot or there are multiple return false  ex: @123.com  ex: j@ck.b@uer@gmail.com
-        //       - if the email address is in a proper format return true ex: JohnDoe123@gmail.com
-        throw new NotImplementedException();
+        //       - if there is more than 1 @ symbol return false  ex: j@ck.b@uer@gmail.com
+        return emailAddress != null && emailAddress.Length == 0 && emailAddress.Where(x => x == '@').Count() == 1;
     }
 
-    internal static string CheckIfProperlyCapitalized(string firstName, string lastName)
+    internal static string CheckForProperCapitalization(string firstName, string lastName)
     {
         // TODO: Check that firstName and lastName are properly capitlized
         //       - if any of the names are null return "NULL"
         //       - if any of the names are empty return "EMPTY"
         //       - if any are un-capitalized return "NOT CAPITALIZED CORRECTLY"
         //       - if the names are already properly capitalized return them concatenated together ex: "John Smith"
-        throw new NotImplementedException();
+        if (firstName == null || lastName == null)
+        {
+            return "NULL";
+        }
+        else if (firstName.Length == 0 || lastName.Length == 0)
+        {
+            return "EMPTY";
+        }
+        else if (!char.IsUpper(firstName[0]) || !char.IsUpper(lastName[0]))
+        {
+            return "NOT CAPITALIZED CORRECTLY";
+        }
+        else
+        {
+            return $"{firstName} {lastName}";
+        }
     }
 
-    internal static string IsPriceInRange(double value)
+    internal static string CheckForPriceInRange(double value)
     {
         #region Ranges
         // Range 1 - 0.00 -> 9.99
@@ -45,7 +59,7 @@ internal class Methods
         throw new NotImplementedException();
     }
 
-    internal static string IsValueNegative(decimal value)
+    internal static string CheckForNegativeValue(decimal value)
     {
         // TODO: Determine if the value is negative
         //       - if the value is negative return "NEGATIVE -"
@@ -54,7 +68,7 @@ internal class Methods
         throw new NotImplementedException();
     }
 
-    internal static void ColdWarmOrHot(double temperature)
+    internal static void CheckTemperature(double temperature)
     {
         // TODO: Determine if it's Cold, Warm, or Hot outside
         //       - if the tempereature is under 54.99 print "COLD" to the console
@@ -63,6 +77,7 @@ internal class Methods
         throw new NotImplementedException();
     }
 
+    // https://bicyclecards.com/how-to-play/war
     internal static void War(Card player1Card, Card player2Card)
     {
         // TODO: Print the winner of this hand (Ace is highest)
