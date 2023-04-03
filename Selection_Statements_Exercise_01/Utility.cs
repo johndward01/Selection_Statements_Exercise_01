@@ -15,7 +15,7 @@ internal class Utility
 
     private static string GenerateRandomCardSuit()
     {
-        var suits = new List<string>() { "Clubs", "Diamonds", "Spades", "Hearts" };
+        var suits = new List<string>() { "♣", "♦", "♠", "♥" };
         return suits[new Random().Next(suits.Count)];
     }
 
@@ -29,20 +29,11 @@ internal class Utility
     
     internal static string GenerateRandomEmail()
     {
-        // Generate a random username
         string username = GenerateRandomString(10, "abcdefghijklmnopqrstuvwxyz0123456789");
-        // Generate a random domain name
         string domain = GenerateRandomString(10, "abcdefghijklmnopqrstuvwxyz");
-        // Generate a random top-level domain
         string[] topLevelDomains = { "com", "net", "org", "edu", "gov", "mil" };
         string topLevelDomain = topLevelDomains[new Random().Next(topLevelDomains.Length)];
-        // Concatenate the username, domain, and top-level domain to form the email address
-        string email = $"{username}@{domain}.{topLevelDomain}";
-        
-        var emails = new List<string>() { "Empty", null, email };
-
-        return emails[new Random().Next(0, 3)];
-
+        return $"{username}@{domain}.{topLevelDomain}";
     }
 
     internal static string GenerateRandomFirstName() => new Bogus.Person().FirstName;
@@ -51,7 +42,7 @@ internal class Utility
     
     internal static double GenerateRandomPrice() => Convert.ToDouble(new Bogus.DataSets.Commerce().Price(-1, 101));
     
-    internal static int GenerateRandomValue() => (new Random().Next(-1,-2));
+    internal static int GenerateRandomValue() => (new Random().Next(-1,2));
     
     internal static double GetRandomTemperature() => ((new Random().Next(-1000, 4000) / 100.0) * 9 / 5) + 32; 
 }

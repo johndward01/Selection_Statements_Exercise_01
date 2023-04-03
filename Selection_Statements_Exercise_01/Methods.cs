@@ -51,12 +51,26 @@ internal class Methods
         // Range 9 - 80.00 -> 89.99
         // Range 10 - 90.00 -> 100.00
         #endregion
-        // TODO: Check if the value is within the following ranges (include 0.00 and 100.00),
-        //       - if it is Null or Empty return "NO VALUE"
-        //       - if it's not in any of the ranges return "Out of Range"
-        //       - if it is within 1 of the ranges above then return "RANGE #" (replace the # with the range number)
 
-        throw new NotImplementedException();
+        // TODO: Check if the value is within the following ranges (include 0.00 and 100.00),
+        //       - if it is within 1 of the ranges above then return "RANGE #" (replace the # with the range number)
+        //       - if it's not in any of the ranges return "OUT OF RANGE"
+        //       - if it doesn't fit the above 2 conditions then default to "NOT A NUMBER"
+        return value switch
+        {
+            < 0.00 or > 100.00 => "OUT RANGE",
+            >= 0.00 and <= 9.99 => "RANGE 1",
+            >= 10.00 and <= 19.99 => "RANGE 2",
+            >= 20.00 and <= 29.99 => "RANGE 3",
+            >= 30.00 and <= 39.99 => "RANGE 4",
+            >= 40.00 and <= 49.99 => "RANGE 5",
+            >= 50.00 and <= 59.99 => "RANGE 6",
+            >= 60.00 and <= 69.99 => "RANGE 7",
+            >= 70.00 and <= 79.99 => "RANGE 8",
+            >= 80.00 and <= 89.99 => "RANGE 9",
+            >= 90.00 and <= 100.00 => "RANGE 10",
+            _ => "NOT A NUMBER"
+        };
     }
 
     internal static string CheckForNegativeValue(decimal value)
@@ -65,16 +79,17 @@ internal class Methods
         //       - if the value is negative return "NEGATIVE -"
         //       - if the value is positive return "POSITIVE +"
         //       - if the value is zero return "ZERO 0"
-        throw new NotImplementedException();
+        return value == 0 ? "ZERO 0" : value < 0 ? "NEGATIVE -" : "POSITIVE +";
     }
 
     internal static void CheckTemperature(double temperature)
     {
         // TODO: Determine if it's Cold, Warm, or Hot outside
-        //       - if the tempereature is under 54.99 print "COLD" to the console
-        //       - if the temperature is 55 -> 78.6 print "WARM" to the console
-        //       - if the temperature is 78.7 or above print "HOT" to the console
-        throw new NotImplementedException();
+        //       - if the tempereature is under 55 print "COLD" to the console
+        //       - if the temperature is between 55 and 77 print "WARM" to the console
+        //       - if the temperature is above 77 or above print "HOT" to the console
+        var temp = temperature < 55 ? "COLD" : temperature > 77 ? "HOT" : "WARM";
+        Console.WriteLine(temp);
     }
 
     // https://bicyclecards.com/how-to-play/war
@@ -84,6 +99,53 @@ internal class Methods
         //       - if player 1's card is higher print "Player 1 WON!!!"
         //       - if player 2's card is higher print "Player 2 WON!!!"
         //       - if there is a tie print "WAR!!!"
-        throw new NotImplementedException();
+        Console.WriteLine($"Player 1's card: {player1Card.Value} {player1Card.Suit}");
+        Console.WriteLine($"Player 2's card: {player2Card.Value} {player2Card.Suit}");
+
+        if (player1Card.Value == player2Card.Value)
+        {
+            Console.WriteLine("WAR!!");
+        }
+        else if (player1Card.Value == "Ace")
+        {
+            Console.WriteLine("PLAYER 1 WON!!!");
+        }
+        else if (player2Card.Value == "Ace")
+        {
+            Console.WriteLine("PLAYER 2 WON!!!");
+        }
+        else if (player1Card.Value == "King" && player2Card.Value != "Ace")
+        {
+            Console.WriteLine("PLAYER 1 WON!!!");
+        }
+        else if (player2Card.Value == "King" && player1Card.Value != "Ace")
+        {
+            Console.WriteLine("PLAYER 2 WON!!!");
+        }
+        else if (player1Card.Value == "Queen" && (player2Card.Value != "Ace" || player2Card.Value == "King"))
+        {
+            Console.WriteLine("PLAYER 1 WON!!!");
+        }
+        else if (player2Card.Value == "Queen" && (player1Card.Value != "Ace" || player1Card.Value == "King"))
+        {
+            Console.WriteLine("PLAYER 2 WON!!!");
+        }
+        else if (player1Card.Value == "Jack" && (player2Card.Value != "Ace" || player2Card.Value == "King" || player2Card.Value == "Queen"))
+        {
+            Console.WriteLine("PLAYER 1 WON!!!");
+        }
+        else if (player2Card.Value == "Jack" && (player1Card.Value != "Ace" || player1Card.Value == "King" || player1Card.Value == "Queen"))
+        {
+            Console.WriteLine("PLAYER 2 WON!!!");
+        }
+        else if (int.Parse(player1Card.Value) > int.Parse(player2Card.Value))
+        {
+            Console.WriteLine("PLAYER 1 WON!!!");
+        }
+        else 
+        {
+            Console.WriteLine("PLAYER 2 WON!!!");
+        }
+
     }
 }
