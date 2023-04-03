@@ -1,14 +1,12 @@
-﻿public class Card
+﻿namespace Selection_Statements_Exercise_01;
+
+public class Card 
 {
-    public enum Suit
+    public Card(string suit, string value)
     {
-        Clubs = 0,
-        Diamonds,
-        Spades,
-        Hearts 
+        Suit = suit;
+        Value = value;
     }
-
-    public string Value { get; set;}
-
+    public string Suit { get; set; }
+    public string Value { get; set; }
 }
-        
